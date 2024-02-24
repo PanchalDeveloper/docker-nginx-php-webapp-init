@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app/public:/var/www/html
+  php:
+    image: php:8.2-fpm
+    container_name: app-php
+    volumes:
+      - ./app/public:/var/www/html
